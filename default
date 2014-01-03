@@ -12,6 +12,14 @@ server {
         try_files $uri $uri/ /index.php;
     }
 
+    location ~ /(data|conf|bin|inc)/ {
+      deny all;
+    }
+
+    location ~ /\.ht {
+      deny  all;
+    }
+
     location ~ \.php$ {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         # NOTE: You should have "cgi.fix_pathinfo = 0;" in php.ini
